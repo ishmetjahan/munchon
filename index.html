@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<title>
+    MunchOn-Snacks from the 90's
+</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="snack-header">
+<img src="https://i.ytimg.com/vi/CDf2QzcdcKg/maxresdefault.jpg" alt= "Nostalgic-Snacks">
+</div>
+
+<div class= "first-container">
+<form class="add-comment-form">
+    <h3>Comment on your Nostalgic Snack</h3>
+    <input type="text" name="name" value="" placeholder="Your Name" class="input-text">
+    <br>
+    <input type="text" name="comment" value="" placeholder="your thoughts about the snack" class="input-text">
+    <br>
+    <input type="submit" name="submit" value="Add New Comment" class="submit">
+</form>
+</div>
+<p style='text-align: center'>Share your on your favorie nostalgic snack<button id="new-comment-btn">Add a new Comment</button></p>
+
+<div class= "second-container">
+        <form class="add-snack-form">
+            <h3>Missing any nostalgic snack? Add your favorite snack from the 90's</h3>
+            <input type="text" name="name" value="" placeholder="Name of your snack" class="input-text">
+            <br>
+            <input type="text" name="image" value="" placeholder="Image URL for the snack" class="input-text">
+            <br>
+            <input type="text" name="description" value="" placeholder="description of the snack" class="input-text">
+            <br>
+            <input type="submit" name="submit" value="Add New Snack" class="submit">
+        </form>
+        </div>
+        <p style='text-align: center'>Share your on your favorie nostalgic snack<button id="new-comment-btn">Add a new Comment</button></p>
+        
+<div id="snack-collection">
+    <!-- Render through all of the snacks here -->
+</div>
+
+<script type="text/javaScript" src="src/index.js"></script>
+</body>
+</html>
