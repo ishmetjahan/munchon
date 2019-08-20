@@ -1,16 +1,13 @@
     const URL="http://localhost:3000/snacks"
     const commentURL = "http://localhost:3000/comments"
     const divTag= document.getElementById("snack-collection")
-    
-///////Fetches//////
+    console.log(divTag)
 
     fetch(URL)
     .then(resp=>resp.json())
     .then(renderAllSnacks)
 
-//// Functions///////
     function renderAllSnacks(snacks){
-        //console.log(snacks)
         snacks.forEach(slapOneSnack)
     }
 
@@ -27,12 +24,12 @@
         <h4>${snack.name}</h4>
         <p>${snack.description}</p>
         <img src=${snack.image} alt="Image-of-90's-snack" style="width:250px;height:250px" >
-        <ul></ul>
-        <form class="add-comment-form">
+        <ul data-id=${snack.id}></ul>
+        <form class="add-comment-form" data-id=${snack.id}>
             <h3>What do you think about this snack?</h3>
-            <input type="text" name="name" value="" placeholder="Your Name" class="input-text">
+            <input type="text" name="newName" class="form-control" id="new-name" placeholder="Your Name">
             <br>
-            <input type="text" name="comment" value="" placeholder="Your thoughts about the snack" class="input-text">
+            <input type="text" name="newComments" class="form-constrol" id="new-comment" placeholder="Munch Munch Munch!">
             <br>
             <input type="submit" name="submit" value="Submit" class="submit">
         </form>
@@ -45,22 +42,22 @@
             // Reference the LI that represents the snack
             // Find the UL, hint: querySelector
             const ulTag= li.querySelector("ul")
+            ulTag.id = "unorderlist"
             ulTag.innerHTML += `
             <li>
                 <p>${comment.user_name}<br>
                     ${comment.comment_content}
-                    <button id="delete-comment"> Delete </button>
-                    <button id="edit-comment"> Edit </button>
+                    <button class="delete-comment"> Delete </button>
+                    <button class="edit-comment"> Edit </button>
                 </p>
             </li>
             
             `
-            //li.append(ulTag)
+            li.append(ulTag)
             // Create an li for the comment and add it to the ul
             // append or plus equals because we need to add each indiviual comment 
-            
             //
-            newComment()
+        
 
         
         }
@@ -68,18 +65,65 @@
     }
 
     ///-------Post a New comment-----////
-   function newComment (){
+   
 
-    const commentForm = document.querySelector(".add-comment-form")
+    divTag.addEventListener('submit', ()=>{
+        //debugger
+       event.preventDefault()
+    const id= event.target.dataset.id
+    //console.log(event.target.newName.value)
+    let newName= event.target.newName.value
+    //console.log(event.target.newName.value)
+    let newComment= event.target.newComments.value
+    //console.log(event.target.newComments.value)
+        //console.log(newName)
+        //console.log(newComment)
+    fetch(commentURL, {
+        method: "POST",
+        headers: {
+            "Application" : "application/json",
+            "Content-Type" : "application/json" 
+        },
+        body: JSON.stringify({
+            snack_id : id,
+            user_name : newName,
+            comment_content : newComment
+        })
+    })
+    .then(resp=>resp.json())
+    .then(data => {
+        // Find the appropriate ul with the data-id that matches
+        // Append the comment (aka. data)
+        const ul= document.querySelector(`ul[data-id='${id}']`)
+        console.log(ul)
+        ul.innerHTML += `
+            <li>
+                <p>${data.user_name}<br>
+                    ${data.comment_content}
+                    <button class="delete-comment"> Delete </button>
+                    <button class="edit-comment"> Edit </button>
+                </p>
+            </li>
+            `
+
+    })
+        
 
 
-   }
+    divTag.addEventListener("click", (e)=>{
+        // if (e.target.className === "delete-comment"){
+        //     console.log("hello")
+        //     // const id = event.target.dataset.id
+        //     // fetch(URL,{
+        //     //     method: "DELETE",
+        //     // })
+        //     // e.target.remove()
+        // }
 
 
+    })
 
-   document.addEventListener('DOMContentLoaded', ()=>{
 
- 
 })
 
 
