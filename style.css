@@ -1,0 +1,22 @@
+/* body {
+    background-image: url("https://ak1.picdn.net/shutterstock/videos/3813701/thumb/4.jpg");
+    background-size: cover;
+  } */
+
+/* icon{
+    
+} */
+
+.h1{
+  align-content: center;
+}
+
+li.snacks-tag {
+  list-style: none;
+  border: 2px solid lightgray;
+  padding: 20px;
+  display: inline-block;
+}
+body{
+  align-content: center
+}

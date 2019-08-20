@@ -6,22 +6,23 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
+<marquee>
+    <h1>MunchOn</h1>
+</marquee>
+
+
 <body>
-<div id="snack-header">
-<img src="https://i.ytimg.com/vi/CDf2QzcdcKg/maxresdefault.jpg" alt= "Nostalgic-Snacks">
+<div id="snack-header" class="icon">
+<marquee>
+        <img src="https://i.ytimg.com/vi/CDf2QzcdcKg/maxresdefault.jpg" style="width:250px;height:250px" alt= "Nostalgic-Snacks">
+</marquee>
+   
 </div>
 
-<div class= "first-container">
-<form class="add-comment-form">
-    <h3>Comment on your Nostalgic Snack</h3>
-    <input type="text" name="name" value="" placeholder="Your Name" class="input-text">
-    <br>
-    <input type="text" name="comment" value="" placeholder="your thoughts about the snack" class="input-text">
-    <br>
-    <input type="submit" name="submit" value="Add New Comment" class="submit">
-</form>
-</div>
-<p style='text-align: center'>Share your on your favorie nostalgic snack<button id="new-comment-btn">Add a new Comment</button></p>
+<!-- <div class= "first-container">
+
+</div> -->
+<!-- <p style='text-align: center'>Share your on your favorie nostalgic snack<button id="new-comment-btn">Add a new Comment</button></p> -->
 
 <div class= "second-container">
         <form class="add-snack-form">
@@ -30,17 +31,18 @@
             <br>
             <input type="text" name="image" value="" placeholder="Image URL for the snack" class="input-text">
             <br>
-            <input type="text" name="description" value="" placeholder="description of the snack" class="input-text">
+            <input type="text" name="description" value="" placeholder="Description of the snack" class="input-text">
             <br>
             <input type="submit" name="submit" value="Add New Snack" class="submit">
         </form>
         </div>
-        <p style='text-align: center'>Share your on your favorie nostalgic snack<button id="new-comment-btn">Add a new Comment</button></p>
+        <br>
+        <!-- <p style='text-align: center'>Share your on your favorie nostalgic snack<button id="new-snack-btn">Add a new Snack</button></p> -->
         
 <div id="snack-collection">
     <!-- Render through all of the snacks here -->
 </div>
 
-<script type="text/javaScript" src="src/index.js"></script>
+<script defer type="text/javaScript" src="index.js"></script>
 </body>
 </html>
