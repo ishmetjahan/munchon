@@ -1,11 +1,12 @@
 /* body {
-    background-image: url("https://ak1.picdn.net/shutterstock/videos/3813701/thumb/4.jpg");
+    background-image: url("https://wsspaper.com/wp-content/uploads/2017/05/90s.jpg");
+    background-size: 300px 100px;
     background-size: cover;
-  } */
+  }  */
 
-/* icon{
+icon{
     
-} */
+}
 
 .h1{
   align-content: center;
@@ -13,10 +14,10 @@
 
 li.snacks-tag {
   list-style: none;
-  border: 2px solid lightgray;
+  border: 2px solid rgb(255, 255, 255);
   padding: 20px;
   display: inline-block;
 }
 body{
-  align-content: center
+  align-content: center;
 }

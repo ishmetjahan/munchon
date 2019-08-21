@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1
   def show
+    #before action is rendering the single comment 
     render json: @comment
   end
 

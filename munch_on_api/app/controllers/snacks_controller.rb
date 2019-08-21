@@ -6,11 +6,17 @@ class SnacksController < ApplicationController
     end
 
     def show
+      find_snack
         render json: @snack
     end
 
-    def edit 
+    def update 
+      find_snack
+      if @snack.update(snack_params)
         render json: @snack
+      else
+        render json: @snack.errors, status: :unprocessable_entity
+      end
     end
 
   def create

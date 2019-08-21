@@ -4,7 +4,7 @@ class CreateSnacks < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :description
       t.string :image
-      t.integer :vote
+      t.integer :vote, default: 0
       t.timestamps
     end
   end

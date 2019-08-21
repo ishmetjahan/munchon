@@ -17,14 +17,13 @@
         //then I would create an li tag to list out a single snack
         //name, description, image and iterate through all of the comments for the snack 
         //append
-        //console.log(li)
         const li = document.createElement("li")
         li.className = "snacks-tag"
         li.innerHTML= `
         <h4>${snack.name}</h4>
         <p>${snack.description}</p>
         <img src=${snack.image} alt="Image-of-90's-snack" style="width:250px;height:250px" >
-        <p id="vote-tag" data-id=${snack.id}> ${snack.vote}  </p>
+        <p id="vote-tag-${snack.id}" data-id=${snack.id}> ${snack.vote}  </p>
         <button id="vote-btn" class="vote-snack" data-id=${snack.id}> Vote 💙 </button>
         <ul data-id=${snack.id}></ul>
         <form class="add-comment-form" data-id=${snack.id}>
@@ -55,9 +54,6 @@
             
             `
             li.append(ulTag)
-            // Create an li for the comment and add it to the ul
-            // append or plus equals because we need to add each indiviual comment 
-            //
         }
     }
 //////-------Post a New Snack-----------////////
@@ -66,11 +62,6 @@
         let snackName = document.getElementById("snack-name").value
         let snackImage = document.getElementById("snack-image").value
         let snackDescription = document.getElementById("snack-description").value
-        
-        //debugger
-        // console.log(snackName)
-        // console.log(snackImage)
-        // console.log(snackDescription)
         
         fetch(URL,{
             method : "POST",
@@ -86,7 +77,6 @@
         })
         .then(resp => resp.json())
         .then(slapOneSnack)
-
 
         e.target.reset()
 })
@@ -148,24 +138,24 @@
         if (e.target.className = "vote-snack"){
         const id= event.target.dataset.id
         //console.log(id)
-        let votesTag= document.getElementById("vote-tag")
-        console.log(votesTag)
+        let votesTag= document.getElementById(`vote-tag-${id}`)
+        console.log(votesTag.innerText)
         
-        //    let numberOfVotes = parseInt(votesTag.innerText)
-        //    numberOfVotes++
+           let numberOfVotes = parseInt(votesTag.innerText)
+           numberOfVotes++
+           votesTag.innerText = numberOfVotes
+           
 
-        //    fetch(URL,{
-        //        method : "POST",
-        //        headers: {
-        //            "Accept" : "applicaiton/json",
-        //            "Content-Type" : "application/json"
-        //        },
-        //        body: 
-        //    })
+           fetch(`http://localhost:3000/snacks/${id}`,{
+               method : "PATCH",
+               headers: {
+                   "Accept" : "application/json",
+                   "Content-Type" : "application/json"
+               },
+               body: JSON.stringify({
+                   vote : numberOfVotes
+               })
+           })
         }
 
     })
-
-
-///////----create a new Snack---------//
-
