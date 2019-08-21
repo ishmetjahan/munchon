@@ -1,7 +1,7 @@
     const URL="http://localhost:3000/snacks"
     const commentURL = "http://localhost:3000/comments"
     const divTag= document.getElementById("snack-collection")
-    console.log(divTag)
+    const divTagForCreateSnack = document.getElementById("second-container")
 
     fetch(URL)
     .then(resp=>resp.json())
@@ -24,6 +24,8 @@
         <h4>${snack.name}</h4>
         <p>${snack.description}</p>
         <img src=${snack.image} alt="Image-of-90's-snack" style="width:250px;height:250px" >
+        <p id="vote-tag" data-id=${snack.id}> ${snack.vote}  </p>
+        <button id="vote-btn" class="vote-snack" data-id=${snack.id}> Vote 💙 </button>
         <ul data-id=${snack.id}></ul>
         <form class="add-comment-form" data-id=${snack.id}>
             <h3>What do you think about this snack?</h3>
@@ -47,8 +49,7 @@
             <li>
                 <p>${comment.user_name}<br>
                     ${comment.comment_content}
-                    <button class="delete-comment"> Delete </button>
-                    <button class="edit-comment"> Edit </button>
+                    <button id="delete-btn" class="delete-comment" data-id=${comment.id}> Delete </button>
                 </p>
             </li>
             
@@ -57,16 +58,40 @@
             // Create an li for the comment and add it to the ul
             // append or plus equals because we need to add each indiviual comment 
             //
-        
-
-        
         }
-
     }
+//////-------Post a New Snack-----------////////
+    divTagForCreateSnack.addEventListener("submit", e =>{
+        e.preventDefault()
+        let snackName = document.getElementById("snack-name").value
+        let snackImage = document.getElementById("snack-image").value
+        let snackDescription = document.getElementById("snack-description").value
+        
+        //debugger
+        // console.log(snackName)
+        // console.log(snackImage)
+        // console.log(snackDescription)
+        
+        fetch(URL,{
+            method : "POST",
+            headers : {
+                "Accept" : "application/json",
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify({
+                name : snackName,
+                description : snackDescription,
+                image : snackImage
+            })
+        })
+        .then(resp => resp.json())
+        .then(slapOneSnack)
+
+
+        e.target.reset()
+})
 
     ///-------Post a New comment-----////
-   
-
     divTag.addEventListener('submit', ()=>{
         //debugger
        event.preventDefault()
@@ -106,23 +131,41 @@
             `
 
     })
+    event.target.reset()
+})
+//////-------Delete Comment--------/////
+    divTag.addEventListener("click", e =>{
+    if (e.target.className === "delete-comment"){
+            const id= event.target.dataset.id
+        fetch(`http://localhost:3000/comments/${id}`,{
+            method : "DELETE"
+        })
+        e.target.parentNode.parentNode.remove()
+    }
+    })
+////////-----increase vote count-------Patch----Update---Edit------///
+    divTag.addEventListener("click", e =>{
+        if (e.target.className = "vote-snack"){
+        const id= event.target.dataset.id
+        //console.log(id)
+        let votesTag= document.getElementById("vote-tag")
+        console.log(votesTag)
         
+        //    let numberOfVotes = parseInt(votesTag.innerText)
+        //    numberOfVotes++
 
-
-    divTag.addEventListener("click", (e)=>{
-        if (e.target.className === "delete-comment"){
-            console.log("hello")
-            // const id = event.target.dataset.id
-            // fetch(commentURL,{
-            //     method: "DELETE",
-            // })
-            // e.target.parentNode.remove()
+        //    fetch(URL,{
+        //        method : "POST",
+        //        headers: {
+        //            "Accept" : "applicaiton/json",
+        //            "Content-Type" : "application/json"
+        //        },
+        //        body: 
+        //    })
         }
-
 
     })
 
 
-})
-
+///////----create a new Snack---------//
 
