@@ -95,7 +95,6 @@
         // Find the appropriate ul with the data-id that matches
         // Append the comment (aka. data)
         const ul= document.querySelector(`ul[data-id='${id}']`)
-        console.log(ul)
         ul.innerHTML += `
             <li>
                 <p>${data.user_name}<br>
@@ -111,14 +110,14 @@
 
 
     divTag.addEventListener("click", (e)=>{
-        // if (e.target.className === "delete-comment"){
-        //     console.log("hello")
-        //     // const id = event.target.dataset.id
-        //     // fetch(URL,{
-        //     //     method: "DELETE",
-        //     // })
-        //     // e.target.remove()
-        // }
+        if (e.target.className === "delete-comment"){
+            console.log("hello")
+            // const id = event.target.dataset.id
+            // fetch(commentURL,{
+            //     method: "DELETE",
+            // })
+            // e.target.parentNode.remove()
+        }
 
 
     })
