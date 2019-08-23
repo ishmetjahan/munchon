@@ -1,22 +1,23 @@
-/* body {
-    background-image: url("https://wsspaper.com/wp-content/uploads/2017/05/90s.jpg");
+body {
+    background-image: url("https://i.pinimg.com/736x/e7/ea/86/e7ea869e656463e6a00524351969d0e2.jpg");
     background-size: 300px 100px;
     background-size: cover;
-  }  */
-
-icon{
-    
-}
+    font-family: Georgia, 'Times New Roman', Times, serif
+  } 
 
 .h1{
   align-content: center;
 }
 
 li.snacks-tag {
+  display: flex;
   list-style: none;
-  border: 2px solid rgb(255, 255, 255);
-  padding: 20px;
-  display: inline-block;
+  text-align: center;
+  /* flex-direction: row; */
+  /* border: 2px solid rgb(96, 37, 37);
+  padding: 20px; */
+  display: inline-grid;
+  margin: 2.5%;
 }
 body{
   align-content: center;

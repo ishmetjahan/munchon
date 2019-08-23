@@ -20,11 +20,11 @@
         const li = document.createElement("li")
         li.className = "snacks-tag"
         li.innerHTML= `
-        <h4>${snack.name}</h4>
+        <h3>${snack.name}</h3>
         <p>${snack.description}</p>
         <img src=${snack.image} alt="Image-of-90's-snack" style="width:250px;height:250px" >
         <p id="vote-tag-${snack.id}" data-id=${snack.id}> ${snack.vote}  </p>
-        <button id="vote-btn" class="vote-snack" data-id=${snack.id}> Vote 💙 </button>
+        <button id="vote-btn" class="vote-snack" data-id=${snack.id}> Vote &#9829 </button>
         <ul data-id=${snack.id}></ul>
         <form class="add-comment-form" data-id=${snack.id}>
             <h3>What do you think about this snack?</h3>
@@ -114,8 +114,7 @@
             <li>
                 <p>${data.user_name}<br>
                     ${data.comment_content}
-                    <button class="delete-comment"> Delete </button>
-                    <button class="edit-comment"> Edit </button>
+                    <button id="delete-btn" class="delete-comment" data-id=${data.id}> Delete </button>
                 </p>
             </li>
             `
